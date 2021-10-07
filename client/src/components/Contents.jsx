@@ -1,8 +1,19 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 const Contents = () => {
   const [ YouTubeList, setYouTubeList ] = useState();
+=======
+import axios from 'axios';
+import React, { useState, useCallback } from 'react';
+
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+const Contents = () => {
+
+>>>>>>> f5467e6a84f570cd76933feaa4faa148a45b34ea
   var request = require("request");
   var optionParams = {
     q: "오징어 게임", // 검색 조건
@@ -41,10 +52,14 @@ const Contents = () => {
 
   return (
   <div>
+<<<<<<< HEAD
     {contentsList.map((content) => (
 <CardBox key={content.id}>
 <CardImg alt="인기 컨텐츠" src={content.medium_cover_image} />
 <CardText>{content.title}</CardText>
+=======
+
+>>>>>>> f5467e6a84f570cd76933feaa4faa148a45b34ea
   </div>
   )
 };
