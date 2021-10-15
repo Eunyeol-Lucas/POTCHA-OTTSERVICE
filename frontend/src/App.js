@@ -141,7 +141,7 @@ const totalStyled = {
   fontWeight: "bold",
   fontStyle: "normal",
   textDecoration: "none",
-  width: "1300px",
+  maxWidth: "1300px",
   display: "inline-block",
 };
 

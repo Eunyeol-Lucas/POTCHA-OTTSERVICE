@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Potcha_info = styled.div`
-  width: 1300px;
+  width: 100%;
   height: 180px;
   margin: 30px auto;
   background: #ffffff8d;
@@ -24,7 +24,7 @@ const Footer = () => {
       />
       <p className="potcha_text" style={{ textAlign: "left" }}>
         <span>
-          카우치 포테이토가 되고픈 자들을 위한 서비스,{" "}
+          카우치 포테이토가 되고픈 자들을 위한 서비스,
           <b style={{ fontWeight: "bold" }}>포챠 POTCHA</b>
         </span>
         <br />

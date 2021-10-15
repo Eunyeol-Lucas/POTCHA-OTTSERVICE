@@ -31,6 +31,7 @@ const Navigation = ({ userid, logout }) => {
     }
   }, [search]);
 
+
   return (
     <ContainerBox>
       <div style={{ display: "inline-block" }} className="ContainerPosition">
