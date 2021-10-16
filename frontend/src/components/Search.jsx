@@ -38,45 +38,33 @@ const Search = ({ windowHeight }) => {
         <div>
           <Title>'{params.query}' 검색 결과</Title>
 
-          {!searchList.movie[0] ? (
-            <span></span>
-          ) : (
-            <div>
-              <ContentCategory>MOVIE Contents</ContentCategory>
-              <CategoryBackground>
-                {searchList?.movie?.map((movie) => (
-                  <Link to={`/detail/movie/${movie.id}/${movie.title}`}>
-                    <ContentsCard
-                      contents={movie}
-                      key={movie.id}
-                      category="movie"
-                    />
-                  </Link>
-                ))}
-              </CategoryBackground>
-            </div>
-          )}
+          <div>
+            <ContentCategory>MOVIE Contents</ContentCategory>
+            <CategoryBackground>
+              {searchList?.movie?.map((movie) => (
+                <Link to={`/detail/movie/${movie.id}/${movie.title}`}>
+                  <ContentsCard
+                    contents={movie}
+                    key={movie.id}
+                    category="movie"
+                  />
+                </Link>
+              ))}
+            </CategoryBackground>
+          </div>
         </div>
 
         <div>
-          {!searchList.tv[0] ? (
-            <span></span>
-          ) : (
-            <div>
-              <ContentCategory>TV Contents</ContentCategory>
-              <CategoryBackground>
-                {searchList?.tv?.map((tv) => (
-                  <Link to={`/detail/tv/${tv.id}/${tv.title}`}>
-                    <ContentsCard
-                      contents={tv}
-                      key={tv.id}
-                      category="movie"
-                    />
-                  </Link>
-                ))}
-              </CategoryBackground>
-            </div>
-          )}
+          <div>
+            <ContentCategory>TV Contents</ContentCategory>
+            <CategoryBackground>
+              {searchList?.tv?.map((tv) => (
+                <Link to={`/detail/tv/${tv.id}/${tv.title}`}>
+                  <ContentsCard contents={tv} key={tv.id} category="movie" />
+                </Link>
+              ))}
+            </CategoryBackground>
+          </div>
         </div>
       </div>
     </SearchField>
