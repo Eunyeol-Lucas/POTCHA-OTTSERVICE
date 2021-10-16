@@ -22,10 +22,6 @@ const Navigation = ({ userid, logout }) => {
   const history = useHistory();
   useEffect(() => {
     if (search) {
-      console.log(search);
-      const body = {
-        search,
-      };
       history.push(`/search/${search}`);
       setSearch("");
     }
