@@ -78,8 +78,7 @@ const App = () => {
                 path="/detail/:category/:id/:title"
                 component={ContentsDetail}
               />
-              <PrivateRoute path="/list/movie" component={ContentsCategory} />
-              <PrivateRoute path="/list/tv" component={ContentsCategory} />
+              <PrivateRoute path="/list/:category" component={ContentsCategory} />
               <Route path="/potato-basket/:nickname">
                 <PotatoesInBasket />
               </Route>
