@@ -36,11 +36,11 @@ const Search = ({ windowHeight }) => {
         }}
       >
         <div>
-          <Title>'{params.query}' 검색 결과</Title>
+          <SearchTitle>'{params.query}' 검색 결과</SearchTitle>
 
           <div>
-            <ContentCategory>MOVIE Contents</ContentCategory>
-            <CategoryBackground>
+            <SearchContentCategory>MOVIE Contents</SearchContentCategory>
+            <SearchCategoryBackground>
               {searchList?.movie?.map((movie) => (
                 <Link to={`/detail/movie/${movie.id}/${movie.title}`}>
                   <ContentsCard
@@ -50,20 +50,20 @@ const Search = ({ windowHeight }) => {
                   />
                 </Link>
               ))}
-            </CategoryBackground>
+            </SearchCategoryBackground>
           </div>
         </div>
 
         <div>
           <div>
-            <ContentCategory>TV Contents</ContentCategory>
-            <CategoryBackground>
+            <SearchContentCategory>TV Contents</SearchContentCategory>
+            <SearchCategoryBackground>
               {searchList?.tv?.map((tv) => (
                 <Link to={`/detail/tv/${tv.id}/${tv.title}`}>
                   <ContentsCard contents={tv} key={tv.id} category="movie" />
                 </Link>
               ))}
-            </CategoryBackground>
+            </SearchCategoryBackground>
           </div>
         </div>
       </div>
@@ -80,14 +80,14 @@ const SearchField = styled.div`
   border-radius: 25px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
-const Title = styled.h1`
+const SearchTitle = styled.h1`
   text-align: left;
   margin-left: 80px;
   position: relative;
   top: 50px;
   font-size: 35px;
 `;
-const ContentCategory = styled.h1`
+const SearchContentCategory = styled.h1`
   text-align: left;
   margin-left: 80px;
   margin-bottom: 20px;
@@ -96,7 +96,7 @@ const ContentCategory = styled.h1`
   font-size: 25px;
 `;
 
-const CategoryBackground = styled.div`
+const SearchCategoryBackground = styled.div`
   margin: 70px 70px 0 70px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);

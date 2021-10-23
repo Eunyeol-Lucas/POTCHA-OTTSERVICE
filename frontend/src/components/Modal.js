@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import tokenHeader from "../authorization/tokenHeader";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 
@@ -33,9 +32,7 @@ export default function Modal({ setQuit }) {
   };
   const deleteConfirm = async () => {
     try {
-      const response = await axios.delete(`/api/mypage/delete/user`, {
-        headers: tokenHeader(),
-      });
+      const response = await axios.delete(`/api/mypage/delete/user`);
       if (response.data.result === "success") {
         setQuit(true);
         onQuit();

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import NonSigninNavigation from "../components/NonSigninNavigation";
-import * as Style from "../components/styleComponent";
+import * as Style from "../components/styledComponent";
 
 const Signin = ({ windowHeight }) => {
   const [email, setEmail] = useState("");

@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import ContentsDetail from "./containers/ContentsDetail";
-import NonSignIn from "./containers/NonSignIn";
-import Signin from "./containers/Signin";
-import Signup from "./containers/Signup";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import PotatoesInBasket from "./containers/PotatoBasketContainer";
-import MainContainer from "./containers/MainContainer";
-import MyPageContainer from "./containers/MyPageContainer";
+import * as Page from './containers/Containers'
 import PrivateRoute from "./helpers/PrivateRoute";
 import PublicRoute from "./helpers/PublicRoute";
-import ContentsCategory from "./containers/ContentsCategory";
 import Banner from "react-js-banner";
 import { useHistory } from "react-router-dom";
 import Search from "./containers/Search";
@@ -48,7 +39,7 @@ const App = () => {
       <div style={{ minHeight: `${windowSize.height}px` }}>
         <div className="totalStyledDiv" style={totalStyled}>
           <div className="navigation" style={stickyNavigation}>
-            <Navigation logout={logout} />
+            <Page.Navigation logout={logout} />
             <Banner
               showBanner={loggedOut}
               css={{
@@ -64,28 +55,31 @@ const App = () => {
           </div>
           <div>
             <Switch>
-              <PublicRoute exact path="/" component={NonSignIn} />
-              <PublicRoute path="/signin" component={Signin} />
+              <PublicRoute exact path="/" component={Page.NonSignIn} />
+              <PublicRoute path="/signin" component={Page.Signin} />
               <PublicRoute path="/signin">
-                <Signin windowHeight={windowSize.height} />
+                <Page.Signin windowHeight={windowSize.height} />
               </PublicRoute>
-              <PublicRoute path="/signup" component={Signup} />
+              <PublicRoute path="/signup" component={Page.Signup} />
               <PublicRoute path="/signup">
-                <Signup windowHeight={windowSize.height} />
+                <Page.Signup windowHeight={windowSize.height} />
               </PublicRoute>
-              <PrivateRoute path="/main" component={MainContainer} />
+              <PrivateRoute path="/main" component={Page.MainContainer} />
               <PrivateRoute
                 path="/detail/:category/:id/:title"
-                component={ContentsDetail}
+                component={Page.ContentsDetail}
               />
-              <PrivateRoute path="/list/:category" component={ContentsCategory} />
+              <PrivateRoute
+                path="/list/:category"
+                component={Page.ContentsCategory}
+              />
               <Route path="/potato-basket/:nickname">
-                <PotatoesInBasket />
+                <Page.PotatoesInBasket />
               </Route>
-              <PrivateRoute path="/mypage" component={MyPageContainer} />
+              <PrivateRoute path="/mypage" component={Page.MyPageContainer} />
               <PrivateRoute path="/mypage">
                 <div style={{ minHeight: `${windowSize.height - 350}px` }}>
-                  <MyPageContainer />
+                  <Page.MyPageContainer />
                 </div>
               </PrivateRoute>
               <PrivateRoute path="/search/:query" component={Search} />
@@ -103,7 +97,7 @@ const App = () => {
               />
             </Switch>
           </div>
-          <Footer />
+          <Page.Footer />
         </div>
       </div>
     </div>

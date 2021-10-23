@@ -1,7 +1,7 @@
 // react-fullpage에서 header에 적용할 navigation bar
 
 import React from "react";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import "../styles/FontStyle.css";
 

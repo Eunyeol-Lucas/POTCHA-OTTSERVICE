@@ -4,7 +4,6 @@ import axios from "axios";
 import PotatoPosterAndTitle from "./PotatoPosterAndTitle";
 import WordCloudComponent from "./WordCloudComponent";
 import { useParams } from "react-router-dom";
-import tokenHeader from "../authorization/tokenHeader";
 import { Scrollbars } from "react-custom-scrollbars";
 
 const PotatoBasket = ({

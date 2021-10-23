@@ -3,7 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import NonSigninNavigation from "../components/NonSigninNavigation";
 import styled from "styled-components";
-import * as Style from '../components/styleComponent'
+import * as Style from '../components/styledComponent'
 import { InputField } from "./Signin";
 
 const Signup = ({ windowHeight }) => {

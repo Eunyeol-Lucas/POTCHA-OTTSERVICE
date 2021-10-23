@@ -1,5 +1,4 @@
 import { ResponsivePie } from "@nivo/pie";
-import { BiFontFamily } from "react-icons/bi";
 
 const chartColors = ["#dce4f2", "#dce4f2", "#aba8f5", "#aba8f5"];
 

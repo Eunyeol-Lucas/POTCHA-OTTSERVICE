@@ -4,7 +4,6 @@ import styled, { css } from "styled-components";
 import { BsPencilFill, BsSaveFill } from "react-icons/bs";
 import { FaSearchPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import tokenHeader from "../authorization/tokenHeader";
 import { MyPageContentsCard } from "./Prediction";
 import Modal from "./Modal";
 import Banner from "react-js-banner";
@@ -149,10 +148,7 @@ const MyPage = ({ user, friendList, onUserProfile, onRequestFriends }) => {
       try {
         const response = await axios.patch(
           `/api/mypage/modify/photo`,
-          formData,
-          {
-            headers: tokenHeader(),
-          }
+          formData
         );
         console.log(response.data);
       } catch (error) {
