@@ -1,18 +1,17 @@
-const POPULAR = "popularity/POPULAR";
-const PREDICABLE = "popularity/PREDICABLE";
-const SIMILAR = "popularity/SIMILAR";
+const POPULAR = "main/POPULAR";
+const PREDICABLE = "main/PREDICABLE";
+const SETTAB = "main/SETTAB";
 
 export const popular = (popularList) => ({ type: POPULAR, popularList });
 export const predictable = (predictableList) => ({
   type: PREDICABLE,
   predictableList,
 });
-export const similar = (similarList) => ({ type: SIMILAR, similarList });
-
+export const setTab = (cur) => ({ type: SETTAB, cur });
 const initialState = {
   popularList: "",
   predictableList: "",
-  similarList: "",
+  currTab: "MOVIE",
 };
 
 function catchOn(state = initialState, action) {
@@ -27,10 +26,10 @@ function catchOn(state = initialState, action) {
         ...state,
         predictableList: action.predictableList,
       };
-    case SIMILAR:
+    case SETTAB:
       return {
         ...state,
-        similarList: action.similarList,
+        currTab: action.cur,
       };
     default:
       return state;

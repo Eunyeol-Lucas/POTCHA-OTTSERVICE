@@ -17,8 +17,7 @@ import {
 } from "./GraphData";
 import { imgUrl } from "../apis/api";
 
-const Main = ({ popularList, predictableList, onPopular, onPredictable }) => {
-  const [currTab, setCurrTab] = useState("MOVIE");
+const Main = ({ popularList, predictableList, currTab, onPopular, onPredictable, onSetTab }) => {
   const [height, setHeight] = useState(994);
   const predictRef = useRef(null);
   // state를 redux로 관리하여 사용자 겸험을 상승
@@ -60,7 +59,7 @@ const Main = ({ popularList, predictableList, onPopular, onPredictable }) => {
   });
 
   const handleClickTab = (tab) => {
-    setCurrTab(tab);
+    onSetTab(tab);
   };
 
   const settings = {

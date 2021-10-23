@@ -1,24 +1,25 @@
+
 import React from "react";
 import { connect } from "react-redux";
 import Main from "../components/Main";
-import { popular, predictable, similar } from "../modules/popularity";
+import { popular, predictable, setTab } from "../modules/main";
 
 const MainContainer = ({
   popularList,
   predictableList,
-  similarList,
+  currTab,
   popular,
   predictable,
-  similar,
+  setTab,
 }) => {
   return (
     <Main
       popularList={popularList}
       predictableList={predictableList}
-      similarList={similarList}
+      currTab={currTab}
       onPopular={popular}
       onPredictable={predictable}
-      onSimilar={similar}
+      onSetTab={setTab}
     />
   );
 };
@@ -27,7 +28,7 @@ export default connect(
   ({ catchOn }) => ({
     popularList: catchOn.popularList,
     predictableList: catchOn.predictableList,
-    similarList: catchOn.similarList,
+    currTab: catchOn.currTab,
   }),
-  { popular, predictable, similar }
+  { popular, predictable, setTab }
 )(MainContainer);
