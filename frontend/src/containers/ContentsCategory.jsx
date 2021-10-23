@@ -4,7 +4,7 @@ import { ThemeProvider } from "@chakra-ui/core";
 import Categorizing from "../components/Categorizing";
 import axios from "axios";
 import { ContentsCard } from "../components/Prediction";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
 
@@ -13,8 +13,8 @@ const ContentsCategory = () => {
   const [filtering, setFiltering] = useState("선택하기");
   const [categorizing, setCategorizing] = useState("선택하기");
   // url에서 category(movie, tv) 분류
-  const category = window.location.href.split("/")[4];
-  console.log(category);
+  const params = useParams();
+  const category = params.category;
 
   const MovieCategoriesList = [
     "음악",
@@ -58,7 +58,6 @@ const ContentsCategory = () => {
     try {
       const response = await axios.get(`/api/${category}/list`);
       setContentsList(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error.response);
     }
@@ -157,7 +156,9 @@ const ContentsCategory = () => {
               <div>Loading ...</div>
             ) : (
               contentsList.map((contents) => (
-                <Link to={`/detail/${category}/${contents.id}/${contents.title}`}>
+                <Link
+                  to={`/detail/${category}/${contents.id}/${contents.title}`}
+                >
                   <ContentsCard contents={contents} key={contents.id} />
                 </Link>
               ))
