@@ -29,10 +29,7 @@ const PotatoBasket = ({
   const movieAnalysis = async () => {
     try {
       const response = await axios.get(
-        `/api/potato_basket/${params.nickname}/movie`,
-        {
-          headers: tokenHeader(),
-        }
+        `/api/potato_basket/${params.nickname}/movie`
       );
       let movieWordList = [];
       Object.values(response.data).map((content) =>
@@ -53,10 +50,7 @@ const PotatoBasket = ({
   const tvAnalysis = async () => {
     try {
       const response = await axios.get(
-        `/api/potato_basket/${params.nickname}/tv`,
-        {
-          headers: tokenHeader(),
-        }
+        `/api/potato_basket/${params.nickname}/tv`
       );
       let tvWordList = [];
       Object.values(response.data).map((content) =>
