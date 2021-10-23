@@ -56,16 +56,16 @@
 
 ## 4. 프로젝트 구성도               
 [와이어프레임] <br />
-<a href="https://whimsical.com/dobbie-s-potcha-GSDWcDcg6yi7Kbgi3Tf8c1"><img src="https://user-images.githubusercontent.com/82889580/138548592-03093c62-dd31-4007-a47a-89852d776b1d.png" alt="drawing" width="400"/></a> <br />
+<a href="https://whimsical.com/dobbie-s-potcha-GSDWcDcg6yi7Kbgi3Tf8c1" target="_blank"><img src="https://user-images.githubusercontent.com/82889580/138548592-03093c62-dd31-4007-a47a-89852d776b1d.png" alt="drawing" width="400"/></a> <br />
 [스토리보드] <br />
-<a href="https://docs.google.com/presentation/d/1T_NNQGZCDs3byeRSfUB7Q-UJRsbi0QB156TCL4aG6Lc/edit#slide=id.p"><img src="https://user-images.githubusercontent.com/82889580/138548575-37bc8698-a8f2-439a-b6b9-6aeaa7034327.png" alt="storyboard" width="400" /></a><br />
+<a href="https://docs.google.com/presentation/d/1T_NNQGZCDs3byeRSfUB7Q-UJRsbi0QB156TCL4aG6Lc/edit#slide=id.p" target="_blank"><img src="https://user-images.githubusercontent.com/82889580/138548575-37bc8698-a8f2-439a-b6b9-6aeaa7034327.png" alt="storyboard" width="400" /></a><br />
 
 ## 5. 프로젝트 팀원 역할 분담
 | 이름 | 역할 |
 | ------ | ------ |
 |   김효곤    | Product Owner / 백엔드 / 데이터 분석 / 기획 |
 | 김민지(1반) | Developer / 백엔드 / 데이터 분석 / 기획 |
-|   남은열    | Developer /  프론트엔드 / 기획 |
+|   남은열    | Developer /  프론트엔드 / 기획 / 배포 |
 |   이민영    | Developer / 프론트엔드 / 데이터 분석 / 기획 |
 
 **멤버별 responsibility**
@@ -87,3 +87,6 @@
 - 기획 단계: 기획 데이터 분석을 통해 해결하고자 하는 문제를 정의
 - 개발 단계: 웹 서버 사용자가 직접 백엔드에 저장할수 있는 기능 구현, 데이터 베이스 구축 및 API 활용, 데이터 분석 개념 총동원하기
 - 수정 단계: 코치님 피드백 반영해서 분석/ 시각화 방식 수정
+
+## 6. 버전
+- ver. 1.6.1
