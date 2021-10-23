@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import ContentsDetail from "./components/ContentsDetail";
-import NonSignIn from "./components/NonSignIn";
+import ContentsDetail from "./containers/ContentsDetail";
+import NonSignIn from "./containers/NonSignIn";
 import Signin from "./containers/Signin";
 import Signup from "./containers/Signup";
 import Navigation from "./components/Navigation";
@@ -11,10 +11,10 @@ import MainContainer from "./containers/MainContainer";
 import MyPageContainer from "./containers/MyPageContainer";
 import PrivateRoute from "./helpers/PrivateRoute";
 import PublicRoute from "./helpers/PublicRoute";
-import ContentsCategory from "./components/ContentsCategory";
+import ContentsCategory from "./containers/ContentsCategory";
 import Banner from "react-js-banner";
 import { useHistory } from "react-router-dom";
-import Search from "./components/Search";
+import Search from "./containers/Search";
 import styled from "styled-components";
 
 const App = () => {
@@ -67,15 +67,11 @@ const App = () => {
               <PublicRoute exact path="/" component={NonSignIn} />
               <PublicRoute path="/signin" component={Signin} />
               <PublicRoute path="/signin">
-                <Signin
-                  windowHeight={windowSize.height}
-                />
+                <Signin windowHeight={windowSize.height} />
               </PublicRoute>
               <PublicRoute path="/signup" component={Signup} />
               <PublicRoute path="/signup">
-                <Signup
-                  windowHeight={windowSize.height}
-                />
+                <Signup windowHeight={windowSize.height} />
               </PublicRoute>
               <PrivateRoute path="/main" component={MainContainer} />
               <PrivateRoute
@@ -159,7 +155,6 @@ const NonPage = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
 `;
 
 const NonPageComment = styled.h2`
