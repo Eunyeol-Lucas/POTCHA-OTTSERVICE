@@ -13,10 +13,7 @@ const ContentsDetail = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `/api/detail/${params.category}/${params.id}`,
-        {
-          headers: tokenHeader(),
-        }
+        `/api/detail/${params.category}/${params.id}`
       );
       setContentsInfo(response.data.content);
       setLike(response.data.is_like);
@@ -73,9 +70,7 @@ const ContentsDetail = () => {
       category: params.category,
       likes: !like,
     };
-    await axios.patch(`/api/like`, body, {
-      headers: tokenHeader(),
-    });
+    await axios.patch(`/api/like`, body);
   };
 
   return (

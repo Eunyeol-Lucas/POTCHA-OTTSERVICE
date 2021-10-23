@@ -22,7 +22,6 @@ const Main = ({ popularList, predictableList, onPopular, onPredictable }) => {
   const [height, setHeight] = useState(994);
   const predictRef = useRef(null);
   // state를 redux로 관리하여 사용자 겸험을 상승
-  //FIXME: just for demonstration(서버와 미연결로 인하여 현재 임시 데이터 api를 불러와서 렌더링 중)
   const requestContents = (subject) => {
     const hitContents = async () => {
       try {
@@ -64,7 +63,6 @@ const Main = ({ popularList, predictableList, onPopular, onPredictable }) => {
     setCurrTab(tab);
   };
 
-  // FIXME: 필요없는 부분은 배포전 재확인 후 삭제 예정
   const settings = {
     dots: true, // 슬라이드 밑에 점 보이게
     infinite: true, // 무한으로 반복
@@ -175,7 +173,6 @@ const Main = ({ popularList, predictableList, onPopular, onPredictable }) => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  // padding: "30px",
                   borderBottom: "solid 2px #a6a3f1",
                   marginBottom: "60px",
                 }}
@@ -266,7 +263,6 @@ const StyledSlider = styled(Slider)`
 `;
 
 const CardBox = styled.div`
-  /* cursor: pointer; */
   width: 200px;
 `;
 

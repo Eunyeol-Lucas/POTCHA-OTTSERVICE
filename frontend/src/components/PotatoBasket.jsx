@@ -18,12 +18,7 @@ const PotatoBasket = ({
   const [tvWord, setTvWord] = useState([]);
   const potatoData = async () => {
     try {
-      const response = await axios.get(
-        `/api/potato_basket/${params.nickname}`,
-        {
-          headers: tokenHeader(),
-        }
-      );
+      const response = await axios.get(`/api/potato_basket/${params.nickname}`);
       onMoviePotatoes(response.data[0].movie);
       onTvPotatoes(response.data[1].tv);
     } catch (error) {
@@ -129,10 +124,7 @@ const PotatoBasket = ({
         </Basket>
         <PotatoAnalysis>
           <BasketTitle>찐 영화 감자 분석</BasketTitle>
-          <WordCloudComponent
-            style={{ display: "static" }}
-            words={movieWord}
-          />
+          <WordCloudComponent style={{ display: "static" }} words={movieWord} />
         </PotatoAnalysis>
       </Container>
       <div style={{ height: "10px" }} />
@@ -178,10 +170,7 @@ const PotatoBasket = ({
         </Basket>
         <PotatoAnalysis>
           <BasketTitle>찐 TV 감자 분석</BasketTitle>
-          <WordCloudComponent
-            style={{ display: "static" }}
-            words={tvWord}
-          />
+          <WordCloudComponent style={{ display: "static" }} words={tvWord} />
         </PotatoAnalysis>
       </Container>
     </Baskets>

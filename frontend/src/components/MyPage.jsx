@@ -92,9 +92,7 @@ const MyPage = ({ user, friendList, onUserProfile, onRequestFriends }) => {
   // 마이페이지 접속 시 프로필을 받아옴
   const fetchData = async () => {
     try {
-      const response = await axios.get(`/api/mypage`, {
-        headers: tokenHeader(),
-      });
+      const response = await axios.get(`/api/mypage`);
       onUserProfile({
         ...user,
         nickname: response.data.nickname,
@@ -110,9 +108,7 @@ const MyPage = ({ user, friendList, onUserProfile, onRequestFriends }) => {
   // 마이페이지 접속 시 나의 친구 목록을 불러옴
   const fetchFriend = async () => {
     try {
-      const response = await axios.get(`/api/mypage/list/friend`, {
-        headers: tokenHeader(),
-      });
+      const response = await axios.get(`/api/mypage/list/friend`);
       onRequestFriends(response.data);
     } catch (error) {
       console.log(error.response);
@@ -121,9 +117,7 @@ const MyPage = ({ user, friendList, onUserProfile, onRequestFriends }) => {
 
   const recommend = async () => {
     try {
-      const response = await axios.get(`/api/mypage/recommend`, {
-        headers: tokenHeader(),
-      });
+      const response = await axios.get(`/api/mypage/recommend`);
       setRecommendList(response.data);
     } catch (error) {
       console.log(error.response);
@@ -176,9 +170,7 @@ const MyPage = ({ user, friendList, onUserProfile, onRequestFriends }) => {
     };
     if (friendNickname) {
       try {
-        const response = await axios.post(`/api/mypage/find/friend`, body, {
-          headers: tokenHeader(),
-        });
+        const response = await axios.post(`/api/mypage/find/friend`, body);
         console.log("response", response);
         if (response.data.result !== "fail") {
           setExistence(false);
@@ -208,16 +200,12 @@ const MyPage = ({ user, friendList, onUserProfile, onRequestFriends }) => {
       nickname: friend.nickname,
     };
     try {
-      const response = await axios.post(`/api/mypage/add/friend`, body, {
-        headers: tokenHeader(),
-      });
+      const response = await axios.post(`/api/mypage/add/friend`, body);
       console.log(response.data);
       if (response.data.result === "fail") {
         alert("본인 또는 이미 추가된 친구입니다.");
       }
-      const fetchData = await axios.get(`/api/mypage/list/friend`, {
-        headers: tokenHeader(),
-      });
+      const fetchData = await axios.get(`/api/mypage/list/friend`);
       onRequestFriends(fetchData.data);
       setFriendNickname("");
     } catch (error) {

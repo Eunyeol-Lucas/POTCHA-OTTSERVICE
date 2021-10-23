@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import NonSigninNavigation from "../components/NonSigninNavigation";
-import styled from "styled-components";
 import * as Style from "../components/styleComponent";
 
 const Signin = ({ windowHeight }) => {
@@ -31,8 +30,11 @@ const Signin = ({ windowHeight }) => {
         if (response.data.result === "success") {
           localStorage.setItem(
             "access_token",
-            JSON.stringify(response.data.access_token)
+            JSON.stringify(`Bearer ${response.data.access_token}`)
           );
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${response.data.access_token}`;
           localStorage.setItem(
             "nickname",
             JSON.stringify(response.data.nickname)
