@@ -4,7 +4,7 @@ import axios from "axios";
 import NonSigninNavigation from "../components/NonSigninNavigation";
 import styled from "styled-components";
 import * as Style from '../components/styledComponent'
-import { InputField } from "./Signin";
+import { InputField } from "../components/Signin";
 
 const Signup = ({ windowHeight }) => {
   const [email, setEmail] = useState("");

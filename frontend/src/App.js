@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import * as Page from './containers/Containers'
+import * as Page from "./containers/Containers";
 import PrivateRoute from "./helpers/PrivateRoute";
 import PublicRoute from "./helpers/PublicRoute";
 import Banner from "react-js-banner";
 import { useHistory } from "react-router-dom";
 import Search from "./containers/Search";
 import styled from "styled-components";
+import axios from "axios";
+import { connect } from "react-redux";
 
-const App = () => {
+const App = ({ token, authenticated }) => {
   const [loggedOut, setLoggedOut] = useState(false);
   const windowSize = useWindowSize();
 
   const history = useHistory();
-
+  
   const onFail = () => {
     setLoggedOut(true);
     setTimeout(() => setLoggedOut(false), 2000);
@@ -26,6 +28,7 @@ const App = () => {
       history.push("/");
     }, 2000);
   };
+  axios.defaults.headers.common["Authorization"] = token;
 
   return (
     <div
@@ -55,34 +58,60 @@ const App = () => {
           </div>
           <div>
             <Switch>
-              <PublicRoute exact path="/" component={Page.NonSignIn} />
-              <PublicRoute path="/signin" component={Page.Signin} />
-              <PublicRoute path="/signin">
-                <Page.Signin windowHeight={windowSize.height} />
-              </PublicRoute>
-              <PublicRoute path="/signup" component={Page.Signup} />
+              <PublicRoute
+                exact
+                path="/"
+                component={Page.NonSignIn}
+                authenticated={authenticated}
+              />
+              <PublicRoute
+                path="/signin"
+                component={Page.SignInContainer}
+                authenticated={authenticated}
+              />
+              <PublicRoute
+                path="/signup"
+                component={Page.Signup}
+                authenticated={authenticated}
+              />
               <PublicRoute path="/signup">
                 <Page.Signup windowHeight={windowSize.height} />
               </PublicRoute>
-              <PrivateRoute path="/main" component={Page.MainContainer} />
+              <PrivateRoute
+                path="/main"
+                component={Page.MainContainer}
+                authenticated={authenticated}
+              />
               <PrivateRoute
                 path="/detail/:category/:id/:title"
                 component={Page.ContentsDetail}
+                authenticated={authenticated}
               />
               <PrivateRoute
                 path="/list/:category"
                 component={Page.ContentsCategory}
+                authenticated={authenticated}
               />
-              <Route path="/potato-basket/:nickname">
-                <Page.PotatoesInBasket />
-              </Route>
-              <PrivateRoute path="/mypage" component={Page.MyPageContainer} />
+              <PrivateRoute
+                path="/potato-basket/:nickname"
+                component={Page.PotatoesInBasket}
+                authenticated={authenticated}
+              />
+              <PrivateRoute
+                path="/mypage"
+                component={Page.MyPageContainer}
+                authenticated={authenticated}
+              />
               <PrivateRoute path="/mypage">
                 <div style={{ minHeight: `${windowSize.height - 350}px` }}>
                   <Page.MyPageContainer />
                 </div>
               </PrivateRoute>
-              <PrivateRoute path="/search/:query" component={Search} />
+              <PrivateRoute
+                path="/search/:query"
+                component={Search}
+                authenticated={authenticated}
+              />
               <PrivateRoute path="/search/:query">
                 <Search windowHeight={windowSize.height} />
               </PrivateRoute>
@@ -104,7 +133,10 @@ const App = () => {
   );
 };
 
-export default App;
+export default connect(({ setToken }) => ({
+  token: setToken.token,
+  authenticated: setToken.authenticated,
+}))(App);
 
 export function useWindowSize() {
   const [windowSize, setWindowSize] = useState({

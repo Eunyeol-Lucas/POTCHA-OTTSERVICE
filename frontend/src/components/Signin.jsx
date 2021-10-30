@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import NonSigninNavigation from "../components/NonSigninNavigation";
-import * as Style from "../components/styledComponent";
+import NonSigninNavigation from "./NonSigninNavigation";
+import * as Style from "./styledComponent";
 
-const Signin = ({ windowHeight }) => {
+const Signin = ({ onSignIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
@@ -28,13 +28,14 @@ const Signin = ({ windowHeight }) => {
       .then((response) => {
         console.log(response);
         if (response.data.result === "success") {
-          localStorage.setItem(
-            "access_token",
-            JSON.stringify(`Bearer ${response.data.access_token}`)
-          );
-          axios.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${response.data.access_token}`;
+          // localStorage.setItem(
+          //   "access_token",
+          //   JSON.stringify(`Bearer ${response.data.access_token}`)
+          // );
+          onSignIn(`Bearer ${response.data.access_token}`);
+          // axios.defaults.headers.common[
+          //   "Authorization"
+          // ] = `Bearer ${response.data.access_token}`;
           localStorage.setItem(
             "nickname",
             JSON.stringify(response.data.nickname)
@@ -43,7 +44,6 @@ const Signin = ({ windowHeight }) => {
             "photolink",
             JSON.stringify(response.data.photolink)
           );
-
           history.push("/main");
           alert("로그인에 성공하였습니다.");
         }
@@ -94,4 +94,3 @@ const Signin = ({ windowHeight }) => {
 };
 
 export default Signin;
-

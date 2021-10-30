@@ -7,6 +7,6 @@ export { default as Navigation } from "./Navigation";
 export { default as NonSignIn } from "./NonSignIn";
 export { default as PotatoesInBasket } from "./PotatoBasketContainer";
 export { default as Search } from "./Search";
-export { default as Signin } from "./Signin";
+export { default as SignInContainer } from "./SignInContainer";
 export { default as Signup } from "./Signup";
 
