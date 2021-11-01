@@ -40,7 +40,7 @@ const PotatoBasket = ({
             }))
         )
       );
-      setMovieWord(movieWord.concat(movieWordList));
+      setMovieWord(movieWordList);
     } catch (error) {
       console.log(error.response);
     }
@@ -61,7 +61,7 @@ const PotatoBasket = ({
             }))
         )
       );
-      setTvWord(tvWord.concat(tvWordList));
+      setTvWord(tvWordList);
     } catch (error) {
       console.log(error.response);
     }

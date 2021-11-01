@@ -11,8 +11,7 @@ import axios from "axios";
 
 const store = createStore(rootReducer, composeWithDevTools());
 
-axios.defaults.baseURL = "http://localhost:5000";
-// axios.defaults.headers.common["Authorization"] = JSON.parse(localStorage.getItem("access_token"));
+axios.defaults.baseURL = "http://127.0.0.1:5000";
 
 ReactDOM.render(
   <Router>

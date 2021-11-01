@@ -9,13 +9,15 @@ import Search from "./containers/Search";
 import styled from "styled-components";
 import axios from "axios";
 import { connect } from "react-redux";
+import { signin, signout } from "./modules/login";
+import refreshToken from "./helpers/refresh";
 
-const App = ({ token, authenticated }) => {
+const App = ({ token, authenticated, signout, signin }) => {
   const [loggedOut, setLoggedOut] = useState(false);
   const windowSize = useWindowSize();
 
   const history = useHistory();
-  
+
   const onFail = () => {
     setLoggedOut(true);
     setTimeout(() => setLoggedOut(false), 2000);
@@ -23,11 +25,17 @@ const App = ({ token, authenticated }) => {
 
   const logout = () => {
     onFail();
+    signout();
     setTimeout(() => {
       window.localStorage.clear();
       history.push("/");
     }, 2000);
   };
+
+  useEffect(() => {
+    refreshToken(signin);
+  }, []);
+
   axios.defaults.headers.common["Authorization"] = token;
 
   return (
@@ -133,10 +141,16 @@ const App = ({ token, authenticated }) => {
   );
 };
 
-export default connect(({ setToken }) => ({
-  token: setToken.token,
-  authenticated: setToken.authenticated,
-}))(App);
+export default connect(
+  ({ setToken }) => ({
+    token: setToken.token,
+    authenticated: setToken.authenticated,
+  }),
+  {
+    signin,
+    signout,
+  }
+)(App);
 
 export function useWindowSize() {
   const [windowSize, setWindowSize] = useState({

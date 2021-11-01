@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import NonSigninNavigation from "./NonSigninNavigation";
 import * as Style from "./styledComponent";
+import cookie from "react-cookies";
 
 const Signin = ({ onSignIn }) => {
   const [email, setEmail] = useState("");
@@ -22,20 +23,19 @@ const Signin = ({ onSignIn }) => {
       email: email,
       password: password,
     };
-
+    const expires = new Date();
+    expires.setDate(Date.now() + 1000 * 60 * 60 * 24 * 14);
     axios
       .post("/api/login", data)
       .then((response) => {
         console.log(response);
         if (response.data.result === "success") {
-          // localStorage.setItem(
-          //   "access_token",
-          //   JSON.stringify(`Bearer ${response.data.access_token}`)
-          // );
           onSignIn(`Bearer ${response.data.access_token}`);
-          // axios.defaults.headers.common[
-          //   "Authorization"
-          // ] = `Bearer ${response.data.access_token}`;
+          cookie.save("refresh_token", response.data.refresh_token, {
+            path: "/",
+            expires,
+            sameSite: true,
+          });
           localStorage.setItem(
             "nickname",
             JSON.stringify(response.data.nickname)
